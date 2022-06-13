@@ -90,9 +90,12 @@ public class TimeTableLayout extends GridLayout {
     {
         row_names = new String[getRowCount()];
         column_names = new String[getColumnCount()];
+        String[] days = {"", "월", "화", "수", "목", "금", "토", "일"};
 
-        for(int i=0;i<getRowCount();i++)
-            row_names[i] = i+"";
+        for (int i = 0; i < getRowCount(); i++) {
+            row_names[i] = days[i];
+        }
+
         for(int i=0;i<getColumnCount();i++)
             column_names[i] = i+"";
     }
