@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -26,6 +28,10 @@ import com.talentica.wifiindoorpositioning.wifiindoorpositioning.model.WifiData;
 import com.talentica.wifiindoorpositioning.wifiindoorpositioning.utils.AppContants;
 import com.talentica.wifiindoorpositioning.wifiindoorpositioning.utils.Utils;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import io.realm.Realm;
 
 /**
@@ -45,6 +51,12 @@ public class LocateMeActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private NearbyReadingsAdapter readingsAdapter = new NearbyReadingsAdapter();
 
+    private LocalDate currentDate;
+    private LocalTime currentTime;
+    private DayOfWeek today;
+    private int time;
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +72,15 @@ public class LocateMeActivity extends AppCompatActivity {
 
         // recover retained object
         mWifiData = (WifiData) getLastNonConfigurationInstance();
+
+        //date and time
+        currentDate = LocalDate.now();
+        today = currentDate.getDayOfWeek();
+        currentTime = LocalTime.now();
+        String why = String.valueOf(currentTime.getHour());
+        time = Integer.parseInt(why);
+
+
 
         // set layout
         setContentView(R.layout.activity_locate_me);
