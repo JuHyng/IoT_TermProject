@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.talentica.wifiindoorpositioning.wifiindoorpositioning">
+    package="com.gachon.wifiindoorpositioning.wifiindoorpositioning">
 
     <uses-permission
         android:name="android.permission.ACCESS_WIFI_STATE"
@@ -18,7 +18,7 @@
 
 
     <application
-        android:name=".BaseApp"
+        android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.HomeActivity"
+            android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -37,27 +37,27 @@
         </activity>
 
         <activity
-            android:name=".ui.NewProjectActivity"
+            android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.NewProjectActivity"
             android:label="@string/new_project" />
         <activity
-            android:name=".ui.ProjectDetailActivity"
+            android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.ProjectDetailActivity"
             android:label="@string/project_detail" />
         <activity
-            android:name=".ui.AddOrEditAccessPointActivity"
+            android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.AddOrEditAccessPointActivity"
             android:label="@string/add_access_point" />
         <activity
-            android:name=".ui.SearchWifiAccessPointActivity"
+            android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.SearchWifiAccessPointActivity"
             android:label="@string/add_access_point" />
         <activity
-            android:name=".ui.AddOrEditReferencePointActivity"
+            android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.AddOrEditReferencePointActivity"
             android:label="@string/add_reference_point" />
         <activity
-            android:name=".ui.LocateMeActivity"
+            android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.LocateMeActivity"
             android:label="@string/locate_me" />
-        <activity android:name=".ui.UnifiedNavigationActivity"
+        <activity android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.UnifiedNavigationActivity"
             android:label="Settings" />
 
-        <service android:name=".core.WifiService" />
+        <service android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.core.WifiService" />
 
     </application>
 
