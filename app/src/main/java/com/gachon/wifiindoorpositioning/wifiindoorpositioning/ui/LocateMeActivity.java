@@ -51,6 +51,7 @@ public class LocateMeActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private NearbyReadingsAdapter readingsAdapter = new NearbyReadingsAdapter();
 
+    private String className;
     private LocalDate currentDate;
     private LocalTime currentTime;
     private DayOfWeek today;
@@ -131,7 +132,9 @@ public class LocateMeActivity extends AppCompatActivity {
                     tvDistance.setText("The distance from stage area is: " + theDistancefromOrigin + "m");
                     LocDistance theNearestPoint = Utils.getTheNearestPoint(loc);
                     if (theNearestPoint != null) {
-                        tvNearestLocation.setText("You are near to: " + theNearestPoint.getName());
+                        className = theNearestPoint.getName();
+                        tvNearestLocation.setText("You are near to: " + className);
+                        updateTimeTable(className, today);
                     }
                     readingsAdapter.setReadings(loc.getPlaces());
                     readingsAdapter.notifyDataSetChanged();
@@ -145,5 +148,9 @@ public class LocateMeActivity extends AppCompatActivity {
         super.onDestroy();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mReceiver);
         stopService(wifiServiceIntent);
+    }
+
+    protected void updateTimeTable(String className, DayOfWeek dayOfWeek) {
+
     }
 }
