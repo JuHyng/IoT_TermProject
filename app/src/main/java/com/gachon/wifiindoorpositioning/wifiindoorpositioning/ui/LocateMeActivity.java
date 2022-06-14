@@ -65,6 +65,7 @@ public class LocateMeActivity extends AppCompatActivity {
     private String time;
 
     private String[] dayToday = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
+    private String[] dayToKorDay = {"월", "화", "수", "목", "금"};
 
 
     Resources res;
@@ -164,25 +165,33 @@ public class LocateMeActivity extends AppCompatActivity {
     protected void updateTimeTable(String className, DayOfWeek dayOfWeek, String time) {
         res = getResources();
         String timeTableOfTheDay;
-        String[] parameter;
         String[] classTimeTable = res.getStringArray(R.array.class_415);
 //        )
 
-        String[][] classes = {};
+        String[][] classes = new String[5][11];
 
         int num = Arrays.asList(dayToday).indexOf(today.toString());
 
         for (int day = 0; day < 5; day++) {
+            //multiple classes
             if (classTimeTable[day].contains("#")) {
                 classes[day] = classTimeTable[day].split("#");
-            }
-            else {
                 for (int i = 0; i < classes[day].length; i++) {
-                    if (classes[day][i].length() > 0)
-                    parameter = classes[day][i].split("/");
+                    if (classes[day][i].contains("/")) addClass(classes[day][i], day);
                 }
             }
-        }
-
+            //single class
+            else {
+                classes[day][0] = classTimeTable[day];
+                if (classes[day][0].contains("/")) addClass(classes[day][0], day);
+                }
+            }
     }
+
+    protected void addClass(String theClass, int day) {
+        String[] parameter = theClass.split("/");
+
+        timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]));
+    }
+
 }
