@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "794783849160",
+    "project_id": "iot-aibuilding",
+    "storage_bucket": "iot-aibuilding.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794783849160:android:4e205fa7ad17ffa753a3fd",
+        "android_client_info": {
+          "package_name": "com.gachon.wifiindoorpositioning.wifiindoorpositioning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794783849160-ql324qa52n7nmib0f9opt8me74um2ipa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gachon.wifiindoorpositioning.wifiindoorpositioning",
+            "certificate_hash": "004239a5e734a43d1fee0f5ac97e881932b595ab"
+          }
+        },
+        {
+          "client_id": "794783849160-l3nt8p3ornjp9lem903j7n5ro9uqt6do.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCosaNOVq8UFVxYVUJEmRpXONnpoJF4ytM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794783849160-l3nt8p3ornjp9lem903j7n5ro9uqt6do.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
