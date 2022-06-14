@@ -92,6 +92,7 @@ public class LocateMeActivity extends AppCompatActivity {
         today = currentDate.getDayOfWeek();
         currentTime = LocalTime.now();
         time = String.valueOf(currentTime.getHour());
+        time = "5";
 
         // set layout
         setContentView(R.layout.activity_locate_me);
@@ -165,7 +166,7 @@ public class LocateMeActivity extends AppCompatActivity {
     protected void updateTimeTable(String className, DayOfWeek dayOfWeek, String time) {
         res = getResources();
         String timeTableOfTheDay;
-        String[] classTimeTable = res.getStringArray(R.array.class_415);
+        String[] classTimeTable = res.getStringArray(R.array.class_412);
 //        )
 
         String[][] classes = new String[5][11];
@@ -177,21 +178,33 @@ public class LocateMeActivity extends AppCompatActivity {
             if (classTimeTable[day].contains("#")) {
                 classes[day] = classTimeTable[day].split("#");
                 for (int i = 0; i < classes[day].length; i++) {
-                    if (classes[day][i].contains("/")) addClass(classes[day][i], day);
+                    if (classes[day][i].contains("/")) addClass(classes[day][i], day, time);
                 }
             }
             //single class
             else {
                 classes[day][0] = classTimeTable[day];
-                if (classes[day][0].contains("/")) addClass(classes[day][0], day);
+                if (classes[day][0].contains("/")) addClass(classes[day][0], day, time);
                 }
             }
     }
 
-    protected void addClass(String theClass, int day) {
+    protected void addClass(String theClass, int day, String t) {
         String[] parameter = theClass.split("/");
+        if (isDuring(t, parameter[1], parameter[2])) {
+            timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]), R.color.colorAccent, R.color.white);
+        }
+        else {
+            timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]));
+        }
+    }
 
-        timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]));
+    protected boolean isDuring(String t, String param1, String param2) {
+        int time = Integer.parseInt(t);
+        int classStart = Integer.parseInt(param1);
+        int block = Integer.parseInt(param2);
+
+        return (time >= classStart)&&(time <= (classStart+block));
     }
 
 }
