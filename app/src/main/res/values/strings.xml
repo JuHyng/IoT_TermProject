@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Wifi Indoor Positioning</string>
-    <string name="new_project">Create New Project</string>
-    <string name="project_detail">Project</string>
+    <string name="floor">New Floor</string>
+    <string name="floor_detail">Floor</string>
     <string name="add_access_point">Add an Access Point</string>
     <string name="add_reference_point">Add a Reference Point</string>
     <string name="action_settings">Settings</string>

@@ -38,10 +38,10 @@
 
         <activity
             android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.NewProjectActivity"
-            android:label="@string/new_project" />
+            android:label="New Floor" />
         <activity
             android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.ProjectDetailActivity"
-            android:label="@string/project_detail" />
+            android:label="Floor Detail" />
         <activity
             android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.AddOrEditAccessPointActivity"
             android:label="@string/add_access_point" />
@@ -53,7 +53,7 @@
             android:label="@string/add_reference_point" />
         <activity
             android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.LocateMeActivity"
-            android:label="@string/locate_me" />
+            android:label="Current Location" />
         <activity android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.UnifiedNavigationActivity"
             android:label="Settings" />
 

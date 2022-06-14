@@ -41,7 +41,7 @@ public class NewProjectActivity extends AppCompatActivity implements View.OnClic
             final String text = etProjectName.getText().toString().trim();
             final String desc = etProjectDesc.getText().toString().trim();
             if (text.isEmpty()) {
-                Snackbar.make(btCreate, "Provide Project Name", Snackbar.LENGTH_LONG)
+                Snackbar.make(btCreate, "Provide Floor Name", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             } else {
                 IndoorProject indoorProject = new IndoorProject(new Date(), text, desc);
