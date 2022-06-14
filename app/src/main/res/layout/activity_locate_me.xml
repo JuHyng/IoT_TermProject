@@ -25,7 +25,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:fontFamily="@font/gangwon"
-        android:layout_margin="5dp"
         android:textSize="30sp"
         android:text="Time: Loading...Please wait" />
 
