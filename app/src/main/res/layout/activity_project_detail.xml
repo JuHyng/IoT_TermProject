@@ -16,14 +16,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Access Point" />
+            android:text="Add Access Point"
+            android:fontFamily="@font/gangwon"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_button"/>
 
         <Button
             android:id="@+id/btn_add_rp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Reference Point" />
+            android:layout_marginLeft="5dp"
+            android:text="Add Reference Point"
+            android:fontFamily="@font/gangwon"
+            android:textSize="23dp"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_button"/>
     </LinearLayout>
 
     <LinearLayout
@@ -38,7 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Access Point:0" />
+            android:text="Access Point:0"
+            android:fontFamily="@font/gangwon"
+            android:textSize="25dp"/>
 
         <TextView
             android:id="@+id/tv_rp_count"
@@ -46,7 +57,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Reference Point:0" />
+            android:text="Reference Point:0"
+            android:fontFamily="@font/gangwon"
+            android:textSize="25dp"/>
 
     </LinearLayout>
 
@@ -61,6 +74,10 @@
         android:id="@+id/btn_locate_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Locate Me" />
+        android:text="Locate Me"
+        android:fontFamily="@font/gangwon"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"/>
 
 </LinearLayout>

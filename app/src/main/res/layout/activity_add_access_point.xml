@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <ScrollView
+        android:paddingTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,13 +19,17 @@
                 android:id="@+id/bn_ap_scan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select via Scan" />
+                android:text="Select via Scan"
+                android:fontFamily="@font/gangwon"
+                android:textSize="40dp"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button"/>
 
             <EditText
                 android:id="@+id/et_ap_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:hint="SSID or Name"
                 android:inputType="text"
                 android:lines="1"
@@ -76,12 +81,17 @@
                 android:hint="MAC (optional)"
                 android:inputType="text"
                 android:lines="1"
-                android:maxLength="50" />
+                android:maxLength="50"
+                android:layout_marginBottom="20dp"/>
 
             <Button
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button"
                 android:id="@+id/bn_ap_create"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon"
+                android:textSize="40dp"
                 android:layout_marginTop="10dp"
                 android:text="Create" />
         </LinearLayout>

@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:paddingTop="150dp">
 
     <EditText
         android:id="@+id/et_project_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Project Name"
+        android:hint="Enter the floor"
         android:inputType="textCapWords"
         android:lines="1"
         android:maxLength="50" />
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Project Description"
+        android:hint="Description"
         android:inputType="text"
         android:lines="3"
         android:maxLength="250" />
@@ -29,7 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Create" />
+        android:text="Create"
+        android:fontFamily="@font/gangwon"
+        android:textSize="40dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"/>
 
 
 </LinearLayout>

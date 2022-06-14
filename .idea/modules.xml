@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IoT_TermProject.iml" filepath="$PROJECT_DIR$/.idea/modules/IoT_TermProject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/IoT_TermProject.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/IoT_TermProject.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IoT_TermProject_copyFi.iml" filepath="$PROJECT_DIR$/.idea/modules/IoT_TermProject_copyFi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/IoT_TermProject_copyFi.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/IoT_TermProject_copyFi.app.iml" />
     </modules>
   </component>
 </project>

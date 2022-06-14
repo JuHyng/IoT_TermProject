@@ -9,7 +9,11 @@
         android:id="@+id/btn_wifi_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Refresh" />
+        android:text="Refresh"
+        android:fontFamily="@font/gangwon"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"/>
 
     <TextView
         android:layout_width="match_parent"

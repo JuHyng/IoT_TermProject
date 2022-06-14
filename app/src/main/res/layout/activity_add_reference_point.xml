@@ -5,11 +5,6 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <Button
-        android:id="@+id/bn_rp_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save" />
 
     <EditText
         android:id="@+id/et_rp_name"
@@ -51,6 +46,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -59,28 +55,36 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
             android:lines="1"
             android:text="Name"
+            android:fontFamily="@font/gangwon"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:lines="1"
             android:text="Mac"
+            android:fontFamily="@font/gangwon"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_weight="1"
             android:lines="1"
             android:text="RSSI"
+            android:fontFamily="@font/gangwon"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -91,5 +95,16 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1" />
+
+    <Button
+        android:layout_marginTop="15dp"
+        android:id="@+id/bn_rp_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:fontFamily="@font/gangwon"
+        android:textSize="35dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"/>
 
 </LinearLayout>
