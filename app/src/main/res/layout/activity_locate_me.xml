@@ -14,23 +14,6 @@
         android:text="You are near to: NA"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tv_distance_origin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:textSize="18sp"
-        android:text="The distance from stage behind recruitment is: " />
-
-    <TextView
-        android:id="@+id/tv_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:textSize="18sp"
-        android:text="Location: Loading...Please wait (Please switch on your wifi and location)" />
 
     <TextView
         android:id="@+id/tv_time"

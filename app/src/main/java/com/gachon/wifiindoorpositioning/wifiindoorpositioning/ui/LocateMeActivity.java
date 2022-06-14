@@ -51,14 +51,14 @@ public class LocateMeActivity extends AppCompatActivity {
     private IndoorProject project;
     private MainActivityReceiver mReceiver = new MainActivityReceiver();
     private Intent wifiServiceIntent;
-    private TextView tvLocation, tvNearestLocation, tvDistance;
+    private TextView tvNearestLocation, tvTime;
     private RecyclerView rvPoints;
     private LinearLayoutManager layoutManager;
     private NearbyReadingsAdapter readingsAdapter = new NearbyReadingsAdapter();
 
     private TimeTableLayout timeTableLayout;
 
-    private String className;
+    private String className = "null";
     private LocalDate currentDate;
     private LocalTime currentTime;
     private DayOfWeek today;
@@ -92,7 +92,6 @@ public class LocateMeActivity extends AppCompatActivity {
         today = currentDate.getDayOfWeek();
         currentTime = LocalTime.now();
         time = String.valueOf(currentTime.getHour());
-        time = "5";
 
         // set layout
         setContentView(R.layout.activity_locate_me);
@@ -107,19 +106,20 @@ public class LocateMeActivity extends AppCompatActivity {
         Realm realm = Realm.getDefaultInstance();
         project = realm.where(IndoorProject.class).equalTo("id", projectId).findFirst();
         Log.v("LocateMeActivity", "onCreate");
+        tvTime.setText(today.toString() + " Time : " + time + ":");
+
     }
 
     private void initUI() {
         layoutManager = new LinearLayoutManager(this);
-        tvLocation = findViewById(R.id.tv_location);
         tvNearestLocation = findViewById(R.id.tv_nearest_location);
-        tvDistance = findViewById(R.id.tv_distance_origin);
+        tvTime = findViewById(R.id.tv_time);
         rvPoints = findViewById(R.id.rv_nearby_points);
         rvPoints.setLayoutManager(layoutManager);
         rvPoints.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvPoints.setAdapter(readingsAdapter);
         timeTableLayout = findViewById(R.id.timetable);
-        updateTimeTable(className, today, time);
+
     }
 
     @Override
@@ -137,16 +137,17 @@ public class LocateMeActivity extends AppCompatActivity {
                 LocationWithNearbyPlaces loc = Algorithms.processingAlgorithms(mWifiData.getNetworks(), project, Integer.parseInt(defaultAlgo));
                 Log.v("LocateMeActivity", "loc:" + loc);
                 if (loc == null) {
-                    tvLocation.setText("Location: NA\nNote:Please switch on your wifi and location services with permission provided to App");
                 } else {
                     String locationValue = Utils.reduceDecimalPlaces(loc.getLocation());
-                    tvLocation.setText("Location: " + locationValue);
                     String theDistancefromOrigin = Utils.getTheDistancefromOrigin(loc.getLocation());
-                    tvDistance.setText("The distance from stage area is: " + theDistancefromOrigin + "m");
                     LocDistance theNearestPoint = Utils.getTheNearestPoint(loc);
                     if (theNearestPoint != null) {
-                        className = theNearestPoint.getName();
+                        if (className == "null") {
+                            className = theNearestPoint.getName();
+                            updateTimeTable(className, today, time);
+                        }
                         tvNearestLocation.setText("You are near to: " + className);
+
 
                     }
                     readingsAdapter.setReadings(loc.getPlaces());
@@ -166,8 +167,9 @@ public class LocateMeActivity extends AppCompatActivity {
     protected void updateTimeTable(String className, DayOfWeek dayOfWeek, String time) {
         res = getResources();
         String timeTableOfTheDay;
-        String[] classTimeTable = res.getStringArray(R.array.class_412);
-//        )
+        int resID;
+        resID = res.getIdentifier(className, "array", this.getPackageName());
+        String[] classTimeTable = res.getStringArray(resID);
 
         String[][] classes = new String[5][11];
 
@@ -192,7 +194,7 @@ public class LocateMeActivity extends AppCompatActivity {
     protected void addClass(String theClass, int day, String t) {
         String[] parameter = theClass.split("/");
         if (isDuring(t, parameter[1], parameter[2])) {
-            timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]), R.color.colorAccent, R.color.white);
+            timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]), res.getColor(R.color.colorAccent), res.getColor(R.color.white));
         }
         else {
             timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]));

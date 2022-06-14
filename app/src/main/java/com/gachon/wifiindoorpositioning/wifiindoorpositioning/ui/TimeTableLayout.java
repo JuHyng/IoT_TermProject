@@ -242,6 +242,8 @@ public class TimeTableLayout extends GridLayout {
         schedule_cell.setLayoutParams(layoutParams);
     }
 
+
+
     //스케줄 추가
     public void addSchedule(String text, int row, int column, int blocks)
     {
