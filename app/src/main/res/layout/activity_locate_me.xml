@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="15dp"
+        android:layout_margin="0dp"
         android:text="You are near to: NA"
         android:fontFamily="@font/gangwon"
         android:textStyle="bold"
@@ -23,8 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
         android:fontFamily="@font/gangwon"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:textSize="30sp"
         android:text="Time: Loading...Please wait" />
 
@@ -32,9 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/timetable"
-        android:rowCount="12"
+        android:rowCount="13"
         android:columnCount="6"
-        app:cellColor="@color/white">
+        app:cellColor="@color/white"
+        >
+
+
 
     </com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.TimeTableLayout>
 

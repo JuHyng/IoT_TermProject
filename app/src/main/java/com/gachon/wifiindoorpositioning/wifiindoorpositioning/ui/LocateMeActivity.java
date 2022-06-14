@@ -16,6 +16,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +69,7 @@ public class LocateMeActivity extends AppCompatActivity {
 
     private String[] dayToday = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
     private String[] dayToKorDay = {"월", "화", "수", "목", "금"};
+
 
 
     Resources res;
@@ -148,8 +150,10 @@ public class LocateMeActivity extends AppCompatActivity {
                         if (className == "null") {
                             className = theNearestPoint.getName();
                             updateTimeTable(className, today, time);
+
                         }
                         tvNearestLocation.setText("You are near to: " + className);
+
 
 
                     }
@@ -171,8 +175,12 @@ public class LocateMeActivity extends AppCompatActivity {
         res = getResources();
         String timeTableOfTheDay;
         int resID;
-        resID = res.getIdentifier(className, "array", this.getPackageName());
+//        resID = res.getIdentifier(className, "array", this.getPackageName());
+        resID = R.array.class_413;//413
+
         String[] classTimeTable = res.getStringArray(resID);
+
+
 
         if (classTimeTable.length > 0) {
 

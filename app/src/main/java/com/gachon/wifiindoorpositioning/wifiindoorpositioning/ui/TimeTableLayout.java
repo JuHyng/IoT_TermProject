@@ -118,8 +118,16 @@ public class TimeTableLayout extends GridLayout {
                 cell.setGravity(Gravity.CENTER);
                 cell.setText("");
 
-                if(i==0 && j!=0)
+                if (i == 0 && j ==0 ) {
+                    cell.setBackgroundColor(getResources().getColor(R.color.lbalck));
+                    cell.setTextColor(getResources().getColor(R.color.white));
+                }
+
+                if(i==0 && j!=0) {
                     cell.setText(column_names[j]);
+                    cell.setBackgroundColor(getResources().getColor(R.color.lbalck));
+                    cell.setTextColor(getResources().getColor(R.color.white));
+                }
                 if(j==0 && i!=0)
                     cell.setText(row_names[i]);
 
