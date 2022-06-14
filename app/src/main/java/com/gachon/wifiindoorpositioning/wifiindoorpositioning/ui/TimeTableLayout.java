@@ -100,7 +100,7 @@ public class TimeTableLayout extends GridLayout {
             row_names[i] = i+"";
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     private void addCells()
     {
         for(int i=0;i<getRowCount();i++)

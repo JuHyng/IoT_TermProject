@@ -19,4 +19,28 @@
         <item name="3">3</item>
         <item name="4">4</item>
     </string-array>
+
+    <string-array name="class_414">
+        <item name = "월"></item>
+        <item name = "화">모바일 프로그래밍(안종현)/2/1#모바일 프로그래밍(안종현)/3/2</item>
+        <item name = "수"></item>
+        <item name = "목"></item>
+        <item name = "금"></item>
+    </string-array>
+
+    <string-array name="class_415">
+        <item name = "월"></item>
+        <item name = "화">소프트웨어공학(정옥란)/5/1</item>
+        <item name = "수"></item>
+        <item name = "목">소프트웨어공학(정옥란)/5/1</item>
+        <item name = "금"></item>
+    </string-array>
+
+    <string-array name="class_412">
+        <item name = "월"></item>
+        <item name = "화"></item>
+        <item name = "수">센서와 무선 네트워크(최재혁)/2/2#데이터과학(김원)/5/3</item>
+        <item name = "목"></item>
+        <item name = "금"></item>
+    </string-array>
 </resources>

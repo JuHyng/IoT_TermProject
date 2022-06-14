@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,6 +33,9 @@ import com.gachon.wifiindoorpositioning.wifiindoorpositioning.utils.Utils;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import io.realm.Realm;
 
@@ -51,11 +56,18 @@ public class LocateMeActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private NearbyReadingsAdapter readingsAdapter = new NearbyReadingsAdapter();
 
+    private TimeTableLayout timeTableLayout;
+
     private String className;
     private LocalDate currentDate;
     private LocalTime currentTime;
     private DayOfWeek today;
-    private int time;
+    private String time;
+
+    private String[] dayToday = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
+
+
+    Resources res;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -78,10 +90,7 @@ public class LocateMeActivity extends AppCompatActivity {
         currentDate = LocalDate.now();
         today = currentDate.getDayOfWeek();
         currentTime = LocalTime.now();
-        String why = String.valueOf(currentTime.getHour());
-        time = Integer.parseInt(why);
-
-
+        time = String.valueOf(currentTime.getHour());
 
         // set layout
         setContentView(R.layout.activity_locate_me);
@@ -107,6 +116,8 @@ public class LocateMeActivity extends AppCompatActivity {
         rvPoints.setLayoutManager(layoutManager);
         rvPoints.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvPoints.setAdapter(readingsAdapter);
+        timeTableLayout = findViewById(R.id.timetable);
+        updateTimeTable(className, today, time);
     }
 
     @Override
@@ -134,7 +145,7 @@ public class LocateMeActivity extends AppCompatActivity {
                     if (theNearestPoint != null) {
                         className = theNearestPoint.getName();
                         tvNearestLocation.setText("You are near to: " + className);
-                        updateTimeTable(className, today);
+
                     }
                     readingsAdapter.setReadings(loc.getPlaces());
                     readingsAdapter.notifyDataSetChanged();
@@ -150,7 +161,28 @@ public class LocateMeActivity extends AppCompatActivity {
         stopService(wifiServiceIntent);
     }
 
-    protected void updateTimeTable(String className, DayOfWeek dayOfWeek) {
+    protected void updateTimeTable(String className, DayOfWeek dayOfWeek, String time) {
+        res = getResources();
+        String timeTableOfTheDay;
+        String[] parameter;
+        String[] classTimeTable = res.getStringArray(R.array.class_415);
+//        )
+
+        String[][] classes = {};
+
+        int num = Arrays.asList(dayToday).indexOf(today.toString());
+
+        for (int day = 0; day < 5; day++) {
+            if (classTimeTable[day].contains("#")) {
+                classes[day] = classTimeTable[day].split("#");
+            }
+            else {
+                for (int i = 0; i < classes[day].length; i++) {
+                    if (classes[day][i].length() > 0)
+                    parameter = classes[day][i].split("/");
+                }
+            }
+        }
 
     }
 }
