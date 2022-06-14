@@ -32,7 +32,9 @@ import com.gachon.wifiindoorpositioning.wifiindoorpositioning.utils.Utils;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -106,7 +108,8 @@ public class LocateMeActivity extends AppCompatActivity {
         Realm realm = Realm.getDefaultInstance();
         project = realm.where(IndoorProject.class).equalTo("id", projectId).findFirst();
         Log.v("LocateMeActivity", "onCreate");
-        tvTime.setText(today.toString() + " Time : " + time + ":");
+        int num = Arrays.asList(dayToday).indexOf(today.toString());
+        tvTime.setText(dayToKorDay[num] + "요일 " + currentTime.getHour() + "시 " + currentTime.getMinute() + "분");
 
     }
 
@@ -171,24 +174,26 @@ public class LocateMeActivity extends AppCompatActivity {
         resID = res.getIdentifier(className, "array", this.getPackageName());
         String[] classTimeTable = res.getStringArray(resID);
 
-        String[][] classes = new String[5][11];
+        if (classTimeTable.length > 0) {
 
-        int num = Arrays.asList(dayToday).indexOf(today.toString());
+            String[][] classes = new String[5][11];
 
-        for (int day = 0; day < 5; day++) {
-            //multiple classes
-            if (classTimeTable[day].contains("#")) {
-                classes[day] = classTimeTable[day].split("#");
-                for (int i = 0; i < classes[day].length; i++) {
-                    if (classes[day][i].contains("/")) addClass(classes[day][i], day, time);
+
+            for (int day = 0; day < 5; day++) {
+                //multiple classes
+                if (classTimeTable[day].contains("#")) {
+                    classes[day] = classTimeTable[day].split("#");
+                    for (int i = 0; i < classes[day].length; i++) {
+                        if (classes[day][i].contains("/")) addClass(classes[day][i], day, time);
+                    }
+                }
+                //single class
+                else {
+                    classes[day][0] = classTimeTable[day];
+                    if (classes[day][0].contains("/")) addClass(classes[day][0], day, time);
                 }
             }
-            //single class
-            else {
-                classes[day][0] = classTimeTable[day];
-                if (classes[day][0].contains("/")) addClass(classes[day][0], day, time);
-                }
-            }
+        }
     }
 
     protected void addClass(String theClass, int day, String t) {
@@ -202,7 +207,7 @@ public class LocateMeActivity extends AppCompatActivity {
     }
 
     protected boolean isDuring(String t, String param1, String param2) {
-        int time = Integer.parseInt(t);
+        int time = Integer.parseInt(t) - 8;
         int classStart = Integer.parseInt(param1);
         int block = Integer.parseInt(param2);
 

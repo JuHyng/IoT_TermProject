@@ -22,9 +22,9 @@
 
     <string-array name="class_414">
         <item name = "월"></item>
-        <item name = "화">모바일 프로그래밍(안종현)/2/1#모바일 프로그래밍(안종현)/3/2</item>
+        <item name = "화">모바일 프로그래밍(안종현)/1/1</item>
         <item name = "수"></item>
-        <item name = "목"></item>
+        <item name = "목">모바일 프로그래밍(안종현)/3/2</item>
         <item name = "금"></item>
     </string-array>
 

@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: C./Users/user/Documents/GitHub/IoT_TermProject_copyFi/app/libs/indoor-positioning-1.1.jar">
+  <library name="Gradle: ./app/libs/indoor-positioning-1.1.jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/libs/indoor-positioning-1.1.jar!/" />
     </CLASSES>
