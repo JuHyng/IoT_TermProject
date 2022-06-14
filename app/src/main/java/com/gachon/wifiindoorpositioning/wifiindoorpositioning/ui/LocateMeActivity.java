@@ -175,8 +175,8 @@ public class LocateMeActivity extends AppCompatActivity {
         res = getResources();
         String timeTableOfTheDay;
         int resID;
-//        resID = res.getIdentifier(className, "array", this.getPackageName());
-        resID = R.array.class_413;//413
+        resID = res.getIdentifier(className, "array", this.getPackageName());
+
 
         String[] classTimeTable = res.getStringArray(resID);
 
