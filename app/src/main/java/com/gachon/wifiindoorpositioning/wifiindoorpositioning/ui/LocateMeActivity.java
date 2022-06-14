@@ -72,6 +72,7 @@ public class LocateMeActivity extends AppCompatActivity {
 
 
 
+
     Resources res;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -175,30 +176,46 @@ public class LocateMeActivity extends AppCompatActivity {
         res = getResources();
         String timeTableOfTheDay;
         int resID;
-        resID = res.getIdentifier(className, "array", this.getPackageName());
+        int classNum = Integer.parseInt(className.split("_")[0]);
+        boolean hasTimeTable = false;
+
+        if ((classNum >= 301)&&(classNum <= 307))
+            hasTimeTable = true;
+        if ((classNum >= 407)&& (classNum <= 415))
+            hasTimeTable =true;
+        if ((classNum >= 503)&&(classNum <= 505))
+            hasTimeTable =true;
+        if ((classNum >= 508)&&(classNum <= 511))
+            hasTimeTable = true;
 
 
-        String[] classTimeTable = res.getStringArray(resID);
+
+        if (hasTimeTable) {
+
+            resID = res.getIdentifier(className, "array", this.getPackageName());
 
 
-
-        if (classTimeTable.length > 0) {
-
-            String[][] classes = new String[5][11];
+            String[] classTimeTable = res.getStringArray(resID);
 
 
-            for (int day = 0; day < 5; day++) {
-                //multiple classes
-                if (classTimeTable[day].contains("#")) {
-                    classes[day] = classTimeTable[day].split("#");
-                    for (int i = 0; i < classes[day].length; i++) {
-                        if (classes[day][i].contains("/")) addClass(classes[day][i], day, time);
+            if (classTimeTable.length > 0) {
+
+                String[][] classes = new String[5][11];
+
+
+                for (int day = 0; day < 5; day++) {
+                    //multiple classes
+                    if (classTimeTable[day].contains("#")) {
+                        classes[day] = classTimeTable[day].split("#");
+                        for (int i = 0; i < classes[day].length; i++) {
+                            if (classes[day][i].contains("/")) addClass(classes[day][i], day, time);
+                        }
                     }
-                }
-                //single class
-                else {
-                    classes[day][0] = classTimeTable[day];
-                    if (classes[day][0].contains("/")) addClass(classes[day][0], day, time);
+                    //single class
+                    else {
+                        classes[day][0] = classTimeTable[day];
+                        if (classes[day][0].contains("/")) addClass(classes[day][0], day, time);
+                    }
                 }
             }
         }
