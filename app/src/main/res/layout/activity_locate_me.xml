@@ -23,8 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:fontFamily="@font/gangwon"
         android:layout_margin="15dp"
-        android:textSize="18sp"
+        android:textSize="30sp"
         android:text="Time: Loading...Please wait" />
 
     <com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.TimeTableLayout
