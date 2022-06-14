@@ -198,7 +198,7 @@ public class LocateMeActivity extends AppCompatActivity {
 
     protected void addClass(String theClass, int day, String t) {
         String[] parameter = theClass.split("/");
-        if (isDuring(t, parameter[1], parameter[2])) {
+        if ((isDuring(t, parameter[1], parameter[2]))&&(dayToday[day].equals(today.toString()))) {
             timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]), res.getColor(R.color.colorAccent), res.getColor(R.color.white));
         }
         else {

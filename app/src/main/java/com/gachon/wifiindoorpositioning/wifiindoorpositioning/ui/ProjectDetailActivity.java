@@ -55,7 +55,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
 
         projectId = getIntent().getStringExtra("id");
         if (projectId == null) {
-            Toast.makeText(getApplicationContext(), "Project Not Found", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Floor Not Found", Toast.LENGTH_LONG).show();
             this.finish();
         }
         Log.i("ProjectDetailActivity", "id>"+projectId);

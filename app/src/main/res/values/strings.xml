@@ -20,12 +20,28 @@
         <item name="4">4</item>
     </string-array>
 
-    <string-array name="class_414">
+    <string-array name="class_411">
         <item name = "월"></item>
-        <item name = "화">모바일 프로그래밍(안종현)/1/1</item>
-        <item name = "수"></item>
-        <item name = "목">모바일 프로그래밍(안종현)/3/2</item>
+        <item name = "화"></item>
+        <item name = "수">데이터과학(김원)/4/3</item>
+        <item name = "목"></item>
         <item name = "금"></item>
+    </string-array>
+
+    <string-array name="class_412">
+        <item name = "월"></item>
+        <item name = "화"></item>
+        <item name = "수"></item>
+        <item name = "목"></item>
+        <item name = "금">소프트웨어 산업 세미나/6/3</item>
+    </string-array>
+
+    <string-array name="class_414">
+        <item name = "월">인공지능(임준식)/2/1#임베디드 시스템(민홍)/3/1#임베디드 시스템(민홍)/4/1#딥러닝(차영운)/5/1#딥러닝(차영운)/5/1#자료구조 및 실습(차영운)/8/1</item>
+        <item name = "화">모바일 프로그래밍(안종현)/1/1#확률통계(유준)/3/1#컴퓨터비전(정용주)/5/1#컴퓨터비전(정용주)/6/1#컴퓨터비전(정용주)/7/1/#컴퓨터비전(정용주)/8/1</item>
+        <item name = "수">임베디드 시스템(민홍)/3/1#프로그래밍 기초(정용주)/6/1# 컴퓨터 비전(정용주)/7/1</item>
+        <item name = "목">인공지능(임준식)/2/1#모바일 프로그래밍(안종현)/3/2#프로그래밍기초(정용주)/5/2#컴퓨터비전(정용주)/7/1</item>
+        <item name = "금">자료구조 및 실습(차영운)/3/2#딥러닝(차영운)/6/1</item>
     </string-array>
 
     <string-array name="class_415">
@@ -36,11 +52,11 @@
         <item name = "금"></item>
     </string-array>
 
-    <string-array name="class_412">
+    <string-array name="class_505">
         <item name = "월"></item>
         <item name = "화"></item>
-        <item name = "수">센서와 무선 네트워크(최재혁)/2/2#데이터과학(김원)/5/3</item>
-        <item name = "목"></item>
-        <item name = "금"></item>
+        <item name = "수"></item>
+        <item name = "목">경영학원론(김현구)/1/1</item>
+        <item name = "금">경영학원론(김현구)/5/1</item>
     </string-array>
 </resources>
