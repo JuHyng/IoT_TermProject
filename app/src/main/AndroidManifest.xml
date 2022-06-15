@@ -50,7 +50,7 @@
             android:label="@string/add_access_point" />
         <activity
             android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.AddOrEditReferencePointActivity"
-            android:label="@string/add_reference_point" />
+            android:label="Classroom AI Building Positioning" />
         <activity
             android:name="com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.LocateMeActivity"
             android:label="Current Location" />

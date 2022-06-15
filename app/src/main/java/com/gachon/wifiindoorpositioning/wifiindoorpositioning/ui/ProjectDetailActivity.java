@@ -73,10 +73,10 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         btnAddAp = findViewById(R.id.btn_add_ap);
         btnAddAp.setOnClickListener(this);
 
-        btnAddRp = findViewById(R.id.btn_add_rp);
+        btnAddRp = findViewById(R.id.btn_locate_me);
         btnAddRp.setOnClickListener(this);
 
-        btnLocateMe = findViewById(R.id.btn_locate_me);
+        btnLocateMe = findViewById(R.id.btn_add_rp);
         btnLocateMe.setOnClickListener(this);
         setCounts();
 
