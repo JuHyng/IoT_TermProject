@@ -54,7 +54,7 @@ public class LocateMeActivity extends AppCompatActivity {
     private IndoorProject project;
     private MainActivityReceiver mReceiver = new MainActivityReceiver();
     private Intent wifiServiceIntent;
-    private TextView tvNearestLocation, tvTime;
+    private TextView tvNearestLocation, tvTime, tvLocation, tvDistance;
     private RecyclerView rvPoints;
     private LinearLayoutManager layoutManager;
     private NearbyReadingsAdapter readingsAdapter = new NearbyReadingsAdapter();
@@ -126,6 +126,9 @@ public class LocateMeActivity extends AppCompatActivity {
         rvPoints.setAdapter(readingsAdapter);
         timeTableLayout = findViewById(R.id.timetable);
 
+        tvLocation = findViewById(R.id.tv_location);
+        tvDistance = findViewById(R.id.tv_distance_origin);
+
     }
 
     @Override
@@ -143,9 +146,12 @@ public class LocateMeActivity extends AppCompatActivity {
                 LocationWithNearbyPlaces loc = Algorithms.processingAlgorithms(mWifiData.getNetworks(), project, Integer.parseInt(defaultAlgo));
                 Log.v("LocateMeActivity", "loc:" + loc);
                 if (loc == null) {
+                    tvLocation.setText("Location: NA\nNote:Please switch on your wifi and location services with permission provided to App");
                 } else {
                     String locationValue = Utils.reduceDecimalPlaces(loc.getLocation());
+                    tvLocation.setText("Location: " + locationValue);
                     String theDistancefromOrigin = Utils.getTheDistancefromOrigin(loc.getLocation());
+                    tvDistance.setText("The distance from stage area is: " + theDistancefromOrigin + "m");
                     LocDistance theNearestPoint = Utils.getTheNearestPoint(loc);
                     if (theNearestPoint != null) {
                             className = theNearestPoint.getName();
