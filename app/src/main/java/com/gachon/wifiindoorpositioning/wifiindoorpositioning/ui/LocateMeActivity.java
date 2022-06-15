@@ -61,7 +61,7 @@ public class LocateMeActivity extends AppCompatActivity {
 
     private TimeTableLayout timeTableLayout;
 
-    private String className = "null";
+    private String className;
     private LocalDate currentDate;
     private LocalTime currentTime;
     private DayOfWeek today;
@@ -148,15 +148,11 @@ public class LocateMeActivity extends AppCompatActivity {
                     String theDistancefromOrigin = Utils.getTheDistancefromOrigin(loc.getLocation());
                     LocDistance theNearestPoint = Utils.getTheNearestPoint(loc);
                     if (theNearestPoint != null) {
-                        if (className == "null") {
                             className = theNearestPoint.getName();
                             updateTimeTable(className, today, time);
 
-                        }
-                        tvNearestLocation.setText("You are near to: " + className);
 
-
-
+                            tvNearestLocation.setText("You are near to: " + className);
                     }
                     readingsAdapter.setReadings(loc.getPlaces());
                     readingsAdapter.notifyDataSetChanged();

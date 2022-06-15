@@ -57,7 +57,7 @@ import io.realm.RealmList;
 
 public class Algorithms {
 
-	final static String K = "7";
+	final static String K = "4";
 
 	/**
 	 * 
