@@ -4,11 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +21,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gachon.wifiindoorpositioning.wifiindoorpositioning.R;
@@ -28,10 +32,15 @@ import com.gachon.wifiindoorpositioning.wifiindoorpositioning.model.ReferencePoi
 import com.gachon.wifiindoorpositioning.wifiindoorpositioning.utils.AppContants;
 import com.gachon.wifiindoorpositioning.wifiindoorpositioning.utils.Utils;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -49,8 +58,7 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
 
     private RecyclerView rvPoints;
     private LinearLayoutManager layoutManager;
-    private EditText etRpName, etRpX, etRpY;
-    private Button bnRpSave;
+
 
     private ReferenceReadingsAdapter readingsAdapter = new ReferenceReadingsAdapter();
     private List<AccessPoint> apsWithReading = new ArrayList<>();
@@ -68,10 +76,33 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
     private String rpId;
     private ReferencePoint referencePointFromDB;
 
+    private AccessPoint max_ap;
+
+    private TimeTableLayout timeTableLayout;
+    private TextView tvNearestLocation, tvTime;
+
+    private String className;
+    private LocalDate currentDate;
+    private LocalTime currentTime;
+    private DayOfWeek today;
+    private String time;
+
+    private String[] dayToday = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
+    private String[] dayToKorDay = {"월", "화", "수", "목", "금"};
+
+    Resources res;
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reference_point);
+
+        //date and time
+        currentDate = LocalDate.now();
+        today = currentDate.getDayOfWeek();
+        currentTime = LocalTime.now();
+        time = String.valueOf(currentTime.getHour());
 
         projectId = getIntent().getStringExtra("projectId");
         if (projectId == null) {
@@ -96,9 +127,7 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
                 readingsAdapter.addAP(ap);
             }
             readingsAdapter.notifyDataSetChanged();
-            etRpName.setText(referencePointFromDB.getName());
-            etRpX.setText(String.valueOf(referencePointFromDB.getX()));
-            etRpY.setText(String.valueOf(referencePointFromDB.getY()));
+
         } else {
             mainWifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             receiverWifi = new AvailableAPsReceiver();
@@ -116,6 +145,8 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
                 Toast.makeText(this,"Please turn on the location", Toast.LENGTH_SHORT).show();
             }
         }
+
+
     }
 
     @Override
@@ -170,8 +201,21 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
         }
         readingsAdapter.setReadings(apsWithReading);
         readingsAdapter.notifyDataSetChanged();
-        bnRpSave.setEnabled(true);
-        bnRpSave.setText("Save");
+
+
+        int i = 0;
+        for (AccessPoint ap:apsWithReading) {
+            if (i == 0) max_ap = ap;
+            else {
+                if (ap.getMeanRss() >= max_ap.getMeanRss()) {
+                    max_ap = ap;
+                }
+            }
+        }
+
+        String result = max_ap.getSsid();
+        tvNearestLocation.setText(result);
+        updateTimeTable(result, today, time);
     }
 
     private Double calculateMeanValue(List<Integer> readings) {
@@ -186,32 +230,19 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
         return mean;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void initUI() {
-        layoutManager = new LinearLayoutManager(this);
-        rvPoints = findViewById(R.id.rv_points);
-        rvPoints.setLayoutManager(layoutManager);
-        rvPoints.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        rvPoints.setAdapter(readingsAdapter);
+        timeTableLayout = findViewById(R.id.timetable);
+        tvNearestLocation = findViewById(R.id.tv_nearest_location);
+        tvTime = findViewById(R.id.tv_time);
 
-        bnRpSave = findViewById(R.id.bn_rp_save);
-        bnRpSave.setOnClickListener(this);
-
-        if (!isEdit) {
-            bnRpSave.setEnabled(false);
-            bnRpSave.setText("Caliberating...");
-        } else {
-            bnRpSave.setEnabled(true);
-            bnRpSave.setText("Save");
-        }
-
-        etRpName = findViewById(R.id.et_rp_name);
-        etRpX = findViewById(R.id.et_rp_x);
-        etRpY = findViewById(R.id.et_rp_y);
+        int num = Arrays.asList(dayToday).indexOf(today.toString());
+        tvTime.setText(dayToKorDay[num] + "요일 " + currentTime.getHour() + "시 " + currentTime.getMinute() + "분");
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == bnRpSave.getId() && !isEdit) {
+        if (!isEdit) {
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
             ReferencePoint referencePoint = new ReferencePoint();
@@ -241,7 +272,7 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
             realm.commitTransaction();
             Toast.makeText(this,"Reference Point Added", Toast.LENGTH_SHORT).show();
             this.finish();
-        } else if (view.getId() == bnRpSave.getId() && isEdit) {
+        } else if (isEdit) {
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
             referencePointFromDB = setValues(referencePointFromDB);
@@ -252,8 +283,8 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
     }
 
     private ReferencePoint setValues(ReferencePoint referencePoint) {
-        String x = etRpX.getText().toString();
-        String y = etRpY.getText().toString();
+        String x = "0";
+        String y = "0";
         if (TextUtils.isEmpty(x)) {
             referencePoint.setX(0.0d);
         } else {
@@ -266,7 +297,7 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
             referencePoint.setY(Double.valueOf(y));
         }
         referencePoint.setLocId(referencePoint.getX() + " " + referencePoint.getY());
-        referencePoint.setName(etRpName.getText().toString());
+        referencePoint.setName("");
         return referencePoint;
     }
 
@@ -319,5 +350,72 @@ public class AddOrEditReferencePointActivity extends AppCompatActivity implement
         if (!wifiWasEnabled && !isEdit) {
             mainWifi.setWifiEnabled(false);
         }
+    }
+
+    protected void updateTimeTable(String className, DayOfWeek dayOfWeek, String time) {
+        res = getResources();
+        String timeTableOfTheDay;
+        int resID;
+        int classNum = Integer.parseInt(className.split("_")[1]);
+        boolean hasTimeTable = false;
+
+        if ((classNum >= 301)&&(classNum <= 307))
+            hasTimeTable = true;
+        if ((classNum >= 407)&& (classNum <= 415))
+            hasTimeTable =true;
+        if ((classNum >= 503)&&(classNum <= 505))
+            hasTimeTable =true;
+        if ((classNum >= 508)&&(classNum <= 511))
+            hasTimeTable = true;
+
+
+
+        if (hasTimeTable) {
+
+            resID = res.getIdentifier(className, "array", this.getPackageName());
+
+
+            String[] classTimeTable = res.getStringArray(resID);
+
+
+            if (classTimeTable.length > 0) {
+
+                String[][] classes = new String[5][11];
+
+
+                for (int day = 0; day < 5; day++) {
+                    //multiple classes
+                    if (classTimeTable[day].contains("#")) {
+                        classes[day] = classTimeTable[day].split("#");
+                        for (int i = 0; i < classes[day].length; i++) {
+                            if (classes[day][i].contains("/")) addClass(classes[day][i], day, time);
+                        }
+                    }
+                    //single class
+                    else {
+                        classes[day][0] = classTimeTable[day];
+                        if (classes[day][0].contains("/")) addClass(classes[day][0], day, time);
+                    }
+                }
+            }
+        }
+    }
+
+    protected void addClass(String theClass, int day, String t) {
+        String[] parameter = theClass.split("/");
+        if ((isDuring(t, parameter[1], parameter[2]))&&(dayToday[day].equals(today.toString()))) {
+            timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]), res.getColor(R.color.colorAccent), res.getColor(R.color.white));
+        }
+        else {
+            timeTableLayout.addSchedule(parameter[0], parameter[1], dayToKorDay[day], Integer.parseInt(parameter[2]));
+        }
+    }
+
+    protected boolean isDuring(String t, String param1, String param2) {
+        int time = Integer.parseInt(t) - 8;
+        int classStart = Integer.parseInt(param1);
+        int block = Integer.parseInt(param2);
+
+        return (time >= classStart)&&(time <= (classStart+block));
     }
 }

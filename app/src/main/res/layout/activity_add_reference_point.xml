@@ -1,110 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-
-    <EditText
-        android:id="@+id/et_rp_name"
+    <TextView
+        android:id="@+id/tv_nearest_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Name"
-        android:inputType="text"
-        android:lines="1"
-        android:maxLength="50" />
+        android:layout_gravity="center"
+        android:layout_margin="0dp"
+        android:text="Loading..."
+        android:fontFamily="@font/gangwon"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="40dp" />
 
-    <LinearLayout
+
+
+    <TextView
+        android:id="@+id/tv_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/gangwon"
+        android:textSize="30sp"
+        android:text="Time: Loading...Please wait" />
 
-        <EditText
-            android:id="@+id/et_rp_x"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="x (decimal)"
-            android:inputType="numberDecimal"
-            android:lines="1"
-            android:text="0.0"
-            android:maxLength="10" />
+    <com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.TimeTableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/timetable"
+        android:rowCount="13"
+        android:columnCount="6"
+        app:cellColor="@color/white"
+        >
 
-        <EditText
-            android:id="@+id/et_rp_y"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="y (decimal)"
-            android:inputType="numberDecimal"
-            android:lines="1"
-            android:text="0.0"
-            android:maxLength="10" />
-    </LinearLayout>
+
+
+    </com.gachon.wifiindoorpositioning.wifiindoorpositioning.ui.TimeTableLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
             android:lines="1"
             android:text="Name"
-            android:fontFamily="@font/gangwon"
-            android:textSize="30dp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:lines="1"
-            android:text="Mac"
-            android:fontFamily="@font/gangwon"
-            android:textSize="30dp"
+            android:text="Loc"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
+            android:gravity="center"
             android:lines="1"
-            android:text="RSSI"
-            android:fontFamily="@font/gangwon"
-            android:textSize="30dp"
+            android:text="Distance"
             android:textStyle="bold" />
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_points"
+        android:id="@+id/rv_nearby_points"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:layout_marginTop="15dp"
-        android:id="@+id/bn_rp_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:fontFamily="@font/gangwon"
-        android:textSize="35dp"
-        android:textColor="@color/white"
-        android:background="@drawable/custom_button"/>
+        android:layout_weight="1"
+        android:visibility="gone" />
 
 </LinearLayout>
