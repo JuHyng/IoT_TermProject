@@ -11,9 +11,18 @@ As there are some classrooms without proper time schedule table paper (with wron
 
 This project is meant to provide exact information of the classroom for students who are inside that classroom.
 
-![그림1](https://user-images.githubusercontent.com/90828283/174014652-32e264ab-cae7-4fbb-8100-0a6898598c56.png)
+# Functional Description
+
+-Indoor positioning based on distance between user device and AP point
+
+-Displays the closest classroom, reference point & Shows time table (if it is classroom)
 
 
+![그림1](https://user-images.githubusercontent.com/90828283/174014933-d916f172-a0d9-435d-909a-19d6dc02e98f.png)
+
+
+
+# Diagrams
 
 Data Flow Diagram
 
