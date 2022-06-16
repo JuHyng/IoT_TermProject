@@ -30,7 +30,7 @@ User’s location or Device’s location
  
  # Progress
  
- Week 12 (18 May - 24 May)
+ ## Week 12 (18 May - 24 May)
  
  Online Webex meeting
  
@@ -39,7 +39,9 @@ User’s location or Device’s location
  -Planning project, distributing role of team members
 
  
- Week 13 (25 May - 31 May)
+ 
+ 
+ ## Week 13 (25 May - 31 May)
  
  Online Webex meeing
  
@@ -48,7 +50,9 @@ User’s location or Device’s location
  -Code analysis of Talentica Wifi indoor positioning source on Github
  
  
- Week 14 (01 June - 07 June)
+ 
+ 
+ ## Week 14 (01 June - 07 June)
  
  Offline development
  
@@ -57,7 +61,9 @@ User’s location or Device’s location
  -Inserting Time table informations of AI building
  
  
- Week 15 (08 June - 14 June)
+ 
+ 
+ ## Week 15 (08 June - 14 June)
  
  Offline testing & AP dectection data insert
  
