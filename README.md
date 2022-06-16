@@ -33,25 +33,36 @@ User’s location or Device’s location
  Week 12 (18 May - 24 May)
  
  Online Webex meeting
+ 
  -Setting objective of the project
+ 
  -Planning project, distributing role of team members
 
+ 
  Week 13 (25 May - 31 May)
  
  Online Webex meeing
+ 
  -Sharing searched open source in Github
+ 
  -Code analysis of Talentica Wifi indoor positioning source on Github
+ 
  
  Week 14 (01 June - 07 June)
  
  Offline development
+ 
  -Adding Time table display function
+ 
  -Inserting Time table informations of AI building
+ 
  
  Week 15 (08 June - 14 June)
  
  Offline testing & AP dectection data insert
+ 
  -Setting Access Points of AI building (classrooms of 2th, 4th, 5th)
+ 
  -Testing and debugging
 
 
