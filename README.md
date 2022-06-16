@@ -9,7 +9,10 @@ This is why students are conducting team project meetings in emptied classrooms 
 
 As there are some classrooms without proper time schedule table paper (with wrong, outdated information, or even with no time schedule table paper), there might be concerning of conflicts between students and professor, school staff of using emptied classroom.
 
-This project is meant to provide exact information of the classroom for students who are inside that classroom: By mobile application using WiFi indoor positioning combined with class time-schedule table database server.
+This project is meant to provide exact information of the classroom for students who are inside that classroom.
+
+![그림1](https://user-images.githubusercontent.com/90828283/174014652-32e264ab-cae7-4fbb-8100-0a6898598c56.png)
+
 
 
 Data Flow Diagram
